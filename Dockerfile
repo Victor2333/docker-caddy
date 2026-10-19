@@ -1,8 +1,8 @@
-FROM caddy:2.10.2-builder AS builder
+FROM docker.io/caddy:2.11.7-builder AS builder
 
 RUN xcaddy build \
-    --with github.com/caddy-dns/alidns@1.0.29
+    --with github.com/caddy-dns/alidns@v1.0.29
 
-FROM caddy:2.11.7
+FROM docker.io/caddy:2.11.7
 
 COPY --from=builder /usr/bin/caddy /usr/bin/caddy
